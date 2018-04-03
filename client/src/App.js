@@ -4,7 +4,8 @@ import api from './test/stubAPI'
 import buttons from './config/buttonsConfig';
 import axios from 'axios';
 
-const host = 'https://demo-ewd-app.herokuapp.com/' ;
+
+const host = '' ;
 
     class ContactForm extends React.Component {
        state = { name: '', address: '', phone_number : ''};
