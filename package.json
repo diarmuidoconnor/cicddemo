@@ -14,7 +14,7 @@
     "copy-client": "cpx \"client/build/**/*\"  build/public",
     "build-prod-client": "npm run clean-client && npm run build-client && npm run copy-client",
     "install-client-mods": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap", 
-    "heroku-postbuild": "npm run install-client-mods && npm run build-prod-client",
+    "heroku-postbuild": "npm run build && npm run install-client-mods && npm run build-prod-client",
 
     "test": "echo \"No test specified\"  && exit 0"
   },
