@@ -95,31 +95,42 @@ const host = '' ;
         handleAddressChange = (e) => this.setState({address: e.target.value});  
         handlePhoneNumChange = (e) =>  
                  this.setState({phone_number: e.target.value});
+        handleDelete = () => {
+          this.setState({ status : 'del'} )
+        };      
 
+        handleConfirm = (e) => { 
+          this.props.deleteHandler(this.props.contact.phone_number) ;
+        };
+  
       render() {
          let activeButtons = buttons.normal ;
          let leftButtonHandler = this.handleEdit ;
-         let rightButtonHandler = null ;
+         let rightButtonHandler = this.handleDelete ;
          let fields = [
                  <p key={'name'}>{this.state.name}</p>,
                  <p key={'address'} >{this.state.address}</p>,
                  <p key={'phone_number'} >{this.state.phone_number}</p>,
                 ] ;
-           if (this.state.status === 'edit' ) {
-               activeButtons = buttons.edit ;
-               leftButtonHandler = this.handleSave;
-               rightButtonHandler = this.handleCancel ;
-               fields = [
-                  <input type="text" className="form-control"
-                     value={this.state.name}
-                     onChange={this.handleNameChange} />,
-                  <input type="text" className="form-control"
-                     value={this.state.address}
-                     onChange={this.handleAddressChange} />,
-                  <input type="text" className="form-control"
-                     value={this.state.phone_number}
-                     onChange={this.handlePhoneNumChange} />
-               ] ;
+         if (this.state.status === 'del' ) {
+             activeButtons = buttons.delete ;
+             leftButtonHandler = this.handleCancel;
+             rightButtonHandler = this.handleConfirm ;
+        } else if (this.state.status === 'edit' ) {
+           activeButtons = buttons.edit ;
+           leftButtonHandler = this.handleSave;
+           rightButtonHandler = this.handleCancel ;
+           fields = [
+              <input type="text" className="form-control"
+                 value={this.state.name}
+                 onChange={this.handleNameChange} />,
+              <input type="text" className="form-control"
+                 value={this.state.address}
+                 onChange={this.handleAddressChange} />,
+              <input type="text" className="form-control"
+                 value={this.state.phone_number}
+                 onChange={this.handlePhoneNumChange} />
+              ] ;
            }                    
           return (
             <div className="col-sm-3" >
@@ -159,7 +170,8 @@ const host = '' ;
          let contactRows =   this.props.contacts.map(
              (c) => 
                    <Contact key={c.phone_number} contact={c} 
-                     updateHandler={this.props.updateHandler} /> 
+                     updateHandler={this.props.updateHandler} 
+                     deleteHandler={this.props.deleteHandler} /> 
             ); 
           return (
             <div className="container-fluid contacts">
@@ -204,6 +216,13 @@ const host = '' ;
                 this.setState({});
             }) ;    
       };
+      deleteContact = (key) => {
+          axios.delete(host + 'api/contacts/' + key )
+             .then ( resp => { 
+                api.delete(key) ;
+                this.setState({});
+            }) ;    
+      };
       updateContact = (key, n, a, p) => {
           axios.put(host + 'api/contacts'+ key,
                    {name: n, phone_number: p, address: a })
@@ -219,7 +238,8 @@ const host = '' ;
                    <Header noContacts={contacts.length}  />
                    <ContactForm  addHandler={this.addContact} />
                    <ContactList contacts={contacts} 
-                    updateHandler={this.updateContact} />
+                    updateHandler={this.updateContact}
+                    deleteHandler={this.deleteContact} />
                 </div>
               
           );
