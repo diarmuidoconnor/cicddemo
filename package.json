@@ -10,7 +10,7 @@
     "start-prod": "npm run build && node ./build/index.js",
     "start-dev": "nodemon --exec babel-node src/index.js",
     "clean-client": "rimraf client/build && rimraf ./build/public",
-    "build-client": "cd client && npm run build",
+    "build-client": "cd client && npm install && npm run build",
     "copy-client": "cpx \"client/build/**/*\"  build/public",
     "build-prod-client": "npm run clean-client && npm run build-client && npm run copy-client",
     "install-client-mods": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap",
