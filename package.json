@@ -16,7 +16,7 @@
     "install-client-mods": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap",
     "heroku-postbuild": "npm run build && npm run install-client-mods && npm run build-prod-client",
     "pretest": "npm run build && npm run build-prod-client",
-    "test": "cross-env NODE_ENV=test mocha --require babel-core/register --require babel-polyfill --exit"
+    "test": "mocha --require babel-core/register --require babel-polyfill --exit"
   },
   "author": "fxwalsh",
   "license": "ISC",
