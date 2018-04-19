@@ -9,7 +9,7 @@ import logger  from 'morgan';
  
 dotenv.config();
 
-const app = express();
+export const app = express();
 
 const port = process.env.PORT;
 
