@@ -190,7 +190,7 @@ const host = '' ;
               <div className="row">
                 <div className="col-md-3 offset-md-3" >
                   <div className="page-header">
-                     <h2>Contact List <span className="badge"> {this.props.noContacts}</span>
+                     <h2>Contyyyact List <span className="badge"> {this.props.noContacts}</span>
                      </h2>
                   </div>
                 </div>
