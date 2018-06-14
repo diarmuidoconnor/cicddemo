@@ -3,12 +3,4 @@ language: node_js
 node_js:
 - stable
 before_script:
-- npm run build
-- npm run build-prod-client
-deploy:
-  provider: heroku
-  api_key:
-    secure: U8L7zbpC+riuVhhmqcsgLr/8kcflyjFuwulXjUgZoQRIhPULX8nmOsYnnzEHWzfxTnIuR37j9kISY/+3bbcjlnczQ1SIm762Or9dEs9orawpm4Kqbl1dNQjwNn+f8QfiZ394nOZpl+aPViga4nWAFporw7brnRjPXeCbON9tw70dbmuoVtX3NOXF/qIVWWED043HlcWvCUEJoAFVlmqviUgNBnLiUfw1UDTLIRYRvMBuRJKfHoeQEFStyFFqaYaHhs0pmJcX0yyHTO9hYgreMPqpUxXtzH8ow0RBwHWB0rlT95Rm9F3+IDal/7y9FXRqEu8Y1WV2zvse3T2nenj3C3KU8q8gyhKc2KQLWG59CLXwz4CQq1BrIoIxOYqSRrGxeNfgi9cpSOWj6Udwy24CijgpPTDY+fUsp4zgy99PGt44zstudGo5W5idNR5Vx8IiSrJGC3y6Yomn/Aw0qd6183yVmX6DC8AGi22o5R9b+wSnhvfeblZbYxDiYZWW4oKoHVHXy4jYG2hV+aVcuWhyzr+iDwG9lR4rE2lNuOLt1MbIZdR6hFZhc75u97I41JbVJqmv+U+pRznSfArx0UrFy0PYlfG7CfPftJeZbU5OOY4aOo5Rhd2MZb64U3dKTmPd1X67rr/DPcJNIvIC/zBBNxhaq0o1MSvYzNC7zhPzlFk=
-  app: ewd-contacts
-  on:
-    repo: diarmuidoconnor/cicdDemo
+- npm run build && npm run build-prod-client
