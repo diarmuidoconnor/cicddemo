@@ -4,6 +4,7 @@ node_js:
 - stable
 before_script:
 - npm run build
+- npm run build-prod-client
 deploy:
   provider: heroku
   api_key:
