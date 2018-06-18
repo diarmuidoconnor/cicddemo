@@ -1,0 +1,6 @@
+{
+  "appURL": "http://localhost:4000/",
+  "explicitWaitMS": 2000,
+  "mochaTimeoutMS": 30000,
+  "PORT": 4000
+}
